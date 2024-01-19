@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스코어보드</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #scoreboard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            margin: 0 10px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            height: 20px;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="scoreboard">
+    <!-- Player 1 Card -->
+    <div class="card" id="player1">
+        <h2>Player 1</h2>
+        <input type="text" placeholder="이름을 입력하세요">
+        <p id="score1">0</p>
+        <button onclick="updateScore('score1', 10)">+10</button>
+        <button onclick="updateScore('score1', -10)">-10</button>
+    </div>
+
+    <!-- Player 2 Card -->
+    <div class="card" id="player2">
+        <h2>Player 2</h2>
+        <input type="text" placeholder="이름을 입력하세요">
+        <p id="score2">0</p>
+        <button onclick="updateScore('score2', 10)">+10</button>
+        <button onclick="updateScore('score2', -10)">-10</button>
+    </div>
+
+    <!-- Player 3 Card -->
+    <div class="card" id="player3">
+        <h2>Player 3</h2>
+        <input type="text" placeholder="이름을 입력하세요">
+        <p id="score3">0</p>
+        <button onclick="updateScore('score3', 10)">+10</button>
+        <button onclick="updateScore('score3', -10)">-10</button>
+    </div>
+
+    <!-- Player 4 Card -->
+    <div class="card" id="player4">
+        <h2>Player 4</h2>
+        <input type="text" placeholder="이름을 입력하세요">
+        <p id="score4">0</p>
+        <button onclick="updateScore('score4', 10)">+10</button>
+        <button onclick="updateScore('score4', -10)">-10</button>
+    </div>
+
+    <!-- Player 5 Card -->
+    <div class="card" id="player5">
+        <h2>Player 5</h2>
+        <input type="text" placeholder="이름을 입력하세요">
+        <p id="score5">0</p>
+        <button onclick="updateScore('score5', 10)">+10</button>
+        <button onclick="updateScore('score5', -10)">-10</button>
+    </div>
+
+    <!-- Player 6 Card -->
+    <div class="card" id="player6">
+        <h2>Player 6</h2>
+        <input type="text" placeholder="이름을 입력하세요">
+        <p id="score6">0</p>
+        <button onclick="updateScore('score6', 10)">+10</button>
+        <button onclick="updateScore('score6', -10)">-10</button>
+    </div>
+</div>
+
+<script>
+    function updateScore(elementId, points) {
+        var scoreElement = document.getElementById(elementId);
+        var currentScore = parseInt(scoreElement.innerText);
+        var newScore = currentScore + points;
+
+        scoreElement.innerText = newScore;
+
+        // 추가된 부분: 서버로 실시간 업데이트 요청
+        updateServer(elementId, newScore);
+    }
+
+    // 서버로 실시간 업데이트 요청을 보내는 함수
+    function updateServer(elementId, newScore) {
+        // 실제로는 서버로 요청을 보내고, 서버에서는 모든 클라이언트에게 실시간으로 데이터를 전송하는 로직이 필요합니다.
+        // 여기서는 예시로 setTimeout을 사용하여 주기적으로 서버에서 업데이트된 데이터를 가져오는 것을 시뮬레이션합니다.
+        setTimeout(function () {
+            // 여기서는 임의의 스코어를 생성하여 업데이트합니다.
+            var updatedScore = Math.floor(Math.random() * 100);
+            var scoreElement = document.getElementById(elementId);
+            scoreElement.innerText = updatedScore;
+        }, 1000); // 1초마다 업데이트 확인 (실제로는 짧은 주기로 업데이트하지 않도록 설정해야 합니다.)
+    }
+</script>
+
+</body>
+</html>
